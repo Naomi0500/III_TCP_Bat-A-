@@ -1,0 +1,25 @@
+Pseudocódigo:
+# 1. Cargar datos históricos (ejemplo)
+datos = pd.read_csv('datos_cosechas.csv')
+X = datos[['lluvia', 'temperatura', 'fertilizante', 'tipo_suelo']]
+y = datos['rendimiento']
+
+# 2. Preprocesamiento
+escalador = StandardScaler()
+X = escalador.fit_transform(X)
+X_entrenar, X_validar, y_entrenar, y_validar = train_test_split(X, y, test_size=0.2)
+
+# 3. Construir red neuronal
+modelo = Sequential()
+modelo.add(Dense(32, activation='relu', input_dim=4))  # Capa oculta
+modelo.add(Dense(1))  # Salida para regresión
+
+modelo.compile(optimizer='adam', loss='mse')  # Error cuadrático medio
+
+# 4. Entrenar
+modelo.fit(X_entrenar, y_entrenar, epochs=200, batch_size=32)
+
+# 5. Predicción
+nuevos_datos = escalador.transform([[150, 28, 50, 2]])  # Ejemplo: Lluvia=150mm, Temp=28°C, etc.
+rendimiento_predicho = modelo.predict(nuevos_datos)
+print(f'Rendimiento estimado: {rendimiento_predicho[0][0]:.2f} kg/ha')
