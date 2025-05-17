@@ -1,0 +1,10 @@
+Problema:
+En zonas agrícolas, los cultivos sufren pérdidas por condiciones climáticas impredecibles y falta de planificación. 
+Los agricultores necesitan predecir el rendimiento de sus cultivos para optimizar recursos.
+    Variables de entrada: Lluvia mensual (mm), temperatura promedio, tipo de suelo, uso de fertilizantes.
+    Salida: Rendimiento estimado (kg/hectárea).
+
+¿Por qué usar redes neuronales?
+Las redes pueden capturar relaciones no lineales entre variables climáticas y rendimiento, 
+además de adaptarse a cambios estacionales y múltiples factores simultáneos.
+'''
